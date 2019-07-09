@@ -1,0 +1,31 @@
+一，建maven项目 选择war包 编码格式设置utf-8
+二，配置pom.xml(spring/springMVC/MyBatis等)
+三，创建package包(beans：自定义bean类,
+common:自定义通用包 存放常量 公共类,
+controller：调度工作 校验，转发,
+dao：数据访问对象 与数据库打交道（增删改查）,
+dto：数据传输对象 装载数据的,
+exception：自定义异常处理类,
+filter:自定义过滤器类,
+interceptor:自定义拦截器类,
+model:实体类，与数据库对应,
+param：值对象,
+service: 服务器层，也叫业务逻辑层，调用dao中的方法，action又调用它,
+util:工具包类)
+四，配置web.xml （spring的xml配置：Spring 提供ServletContextListener 的一个实现类ContextLoaderListener ，该类可以作为listener 使用，它会在创建时自动查找applicationContext.xml 文件）
+五，配置applicationContext.xml （1，在src/main/resources下创建spring文件夹创建applicationContext.xml
+                                                    2，配置数据库（数据库连接信息，配置druid连接池（在db下存放dbproperties.perperties文件），配置mybatis）
+                                                    3，配置事务管理（开启事务管理，开启申明式事务，配置事务切面））
+六，配置spring-servlet.xml(1，在web.xml里配置servlet：每次开启自动查找spring-servlet.xml文件 文件放在spring文件夹下
+                                         2，配置启动包扫描功能（controller service）
+                                         3，配置注解驱动 spring mvc功能
+                                         4，配置视图解析器（顺序：视图解析器 json解析器 默认视图解析器）)
+七，配置mybatis-config.xml(1，在src/main/resources下创建db文件夹，将配置xml文件放到下面，
+                                           2，日志配置
+                                           3，logback.xml配置 将配置文件放置到src/main/resources下)
+八，在mes107创建数据库表user（id username telephone）
+九，测试配置信息（1，在model包创建User.java 
+                             2，在dao包创建UserMapper.java 
+                             3，在mapper文件夹下创建UserMapper.xml  以上三个文件都由自动生成器生成
+                             4，在service包下创建UserService.java
+                             5,在src/main/test下创建Spring_MybatisTest TestUserController）
